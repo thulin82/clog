@@ -1,0 +1,21 @@
+{
+    "name": "thulin82/clog",    
+    "type": "library",
+    "description": "PHP classes for logging framework",
+    "keywords": ["module", "framework", "mvc", "micro", "education"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Markus Thulin",
+            "email": "macky_b@hotmail.com",
+            "homepage": "https://github.com/thulin82",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "autoload": {
+        "psr-4": { "thulin82\\": "src/" }
+    }
+}
