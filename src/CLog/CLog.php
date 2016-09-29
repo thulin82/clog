@@ -11,7 +11,7 @@ class CLog
      *
      */
     private $timestamp = array();
-    private $pos = 0;
+    private $pos       = 0;
 
 
     /**
@@ -21,8 +21,8 @@ class CLog
     public function __construct() {
         
     }
-    
-    
+
+
     /**
      * timestamp, log a event with a time.
      *
@@ -50,8 +50,8 @@ class CLog
 
         $this->pos++;
     }
-    
-    
+
+
     /**
      * Get the number of timestamps made.
      *
@@ -61,8 +61,8 @@ class CLog
     public function numberOfTimestamps() {
         return count($this->timestamp);
     }
-    
-    
+
+
     /**
      * Get the timestamps made.
      *
@@ -72,8 +72,8 @@ class CLog
     public function returnTimestamps() {
         return $this->timestamp;
     }
-    
-    
+
+
     /**
      * Page load time as html.
      *
@@ -81,14 +81,14 @@ class CLog
      *
      */
     public function pageLoadTime() {
-        $first = $this->timestamp[0]['when'];
-        $last = $this->timestamp[count($this->timestamp) - 1]['when'];
+        $first    = $this->timestamp[0]['when'];
+        $last     = $this->timestamp[count($this->timestamp) - 1]['when'];
         $loadtime = round($last - $first, 3);
-        $html = "<p>Page was loaded in {$loadtime} secs.</p>";
+        $html     = "<p>Page was loaded in {$loadtime} secs.</p>";
         return $html;
     }
-    
-    
+
+
     /**
      * Memory peak as html.
      *
@@ -112,7 +112,8 @@ class CLog
         }
         return $html;
     }
-    
+
+
     /**
      * Timestamps as a HTML table.
      *
@@ -122,7 +123,6 @@ class CLog
      *
      */
     public function asHTMLTable($css = false) {
-        
         $prev = $first = $this->timestamp[0]['when'];
         $last = $this->timestamp[count($this->timestamp) - 1]['when'];
         if ($css == true) {
@@ -131,7 +131,7 @@ class CLog
         } else {
             $html = "";
         }
-        
+
         $html .= <<<EOD
                     <table class=table>
                         <caption>Timestamps</caption>
@@ -176,10 +176,10 @@ EOD;
         }
         $html .= "</table>";
         return $html;
-        
+
     }
-    
-    
+
+
     /**
      * Print your timestamps to a file
      *
@@ -196,5 +196,5 @@ EOD;
             file_put_contents($filename, $res);
         }
     }
-        
+
 }
