@@ -1,5 +1,5 @@
 <?php
-namespace thulin82\Log;
+namespace thulin82\CLog;
 /**
  * Class to log what happens.
  *
