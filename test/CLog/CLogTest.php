@@ -33,6 +33,22 @@ class CLogTest extends \PHPUnit_Framework_TestCase {
         $exp = 1;
         $this->assertEquals($res, $exp, "Missmatch in number of timestamps"); 
     }
+    
+    /**
+     * Testing numberOfTimestamps2()
+     *
+     * @return void
+     *
+     */
+    public function testNumberOfTimestamps2() {
+        $el = new \thulin82\CLog\CLog();
+
+        $el->timestamp("test", "test", "test");
+        $el->timestamp("test2", "test2", "test2");
+        $res = $el->numberOfTimestamps();
+        $exp = 2;
+        $this->assertEquals($res, $exp, "Missmatch in number of timestamps"); 
+    }
 
     /**
      * Testing returnTimestamps()
