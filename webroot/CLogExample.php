@@ -37,4 +37,4 @@ echo $log->pageLoadTime();
 //Print memoryPeak()
 echo $log->memoryPeak("KB");
 
-$log->printToFile("clog.log" ,true);
+$log->printToFile("clog.log", true);

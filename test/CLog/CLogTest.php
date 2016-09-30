@@ -7,32 +7,46 @@ namespace thulin82\CLog;
 class CLogTest extends \PHPUnit_Framework_TestCase {
 
     /**
-     * Test 
+     * Basic Test (not testing CLog)
      *
      * @return void
      *
      */
     public function testBasicTest() {
-        $el = new \thulin82\CLog\CLog();
-        
+
         $res = "test";
         $exp = "test";
         $this->assertEquals($res, $exp, "Created strings missmatch"); 
     }
-    
+
     /**
-     * Test2
+     * Testing numberOfTimestamps()
      *
      * @return void
      *
      */
     public function testNumberOfTimestamps() {
         $el = new \thulin82\CLog\CLog();
-        
+
         $el->timestamp("test", "test", "test");
         $res = $el->numberOfTimestamps();
         $exp = 1;
         $this->assertEquals($res, $exp, "Missmatch in number of timestamps"); 
+    }
+
+    /**
+     * Testing returnTimestamps()
+     *
+     * @return void
+     *
+     */
+    public function testReturnTimestamps() {
+        $el = new \thulin82\CLog\CLog();
+
+        $el->timestamp("test", "test", "test");
+        $res = $el->returnTimestamps();
+        $exp = 1;
+        $this->assertCount($exp, $res);
     }
 
 }

@@ -31,7 +31,7 @@ class CLog
      * @param string $comment on the timestamp.
      *
      */
-    public function timestamp($domain, $where, $comment=null) {
+    public function timestamp($domain, $where, $comment = null) {
         $now = microtime(true);
 
         $this->timestamp[] = array(
@@ -43,7 +43,7 @@ class CLog
             'memory'  => memory_get_usage(true),
         );
 
-        if($this->pos > 0) {
+        if ($this->pos > 0) {
             $this->timestamp[$this->pos - 1]['memory-peak'] = memory_get_peak_usage(true);
             $this->timestamp[$this->pos - 1]['duration']    = $now - $this->timestamp[$this->pos - 1]['when'];
         }
@@ -148,7 +148,7 @@ class CLog
                         </tr>
 EOD;
         $right = ' style="text-align: right;"';
-        foreach($this->timestamp as $val) {
+        foreach ($this->timestamp as $val) {
             $pos      = $val['pos'];
             $domain   = $val['domain'];
             $where    = $val['where'];
