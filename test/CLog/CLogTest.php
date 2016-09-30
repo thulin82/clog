@@ -98,6 +98,21 @@ class CLogTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
+     * Testing asHTMLTable($css = false)
+     *
+     * @return void
+     *
+     */
+    public function testAsHTMLTable() {
+        $el = new \thulin82\CLog\CLog();
+
+        $el->timestamp("test", "test", "test");
+        $el->timestamp("test2", "test2", "test2");
+        $res = $el->asHTMLTable();
+        $this->assertInternalType('string', $res);
+    }
+
+    /**
      * Testing printToFile($filename = "clog.log", $append = false)
      *
      * @return void
@@ -107,8 +122,12 @@ class CLogTest extends \PHPUnit_Framework_TestCase {
     $el = new \thulin82\CLog\CLog();
 
     $el->timestamp("test", "test", "test");
-    $el->printToFile();
-    $this->assertFileExists("clog.log", 'File does not exist');
+    $name = "clog.log";
+    $el->printToFile($name);
+    $this->assertFileExists($name, 'File does not exist');
+
+    $el->printToFile($name, true);
+    $this->assertFileExists($name, 'File does not exist');
     }
     
 }
