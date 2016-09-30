@@ -125,7 +125,7 @@ class CLog
     public function asHTMLTable($css = false) {
         $prev = $first = $this->timestamp[0]['when'];
         $last = $this->timestamp[count($this->timestamp) - 1]['when'];
-        if ($css == true) {
+        if ($css === true) {
             $html = '<html><head><link rel="stylesheet" type="text/css" href="css/table.css"></head><body>';
 
         } else {
@@ -190,7 +190,7 @@ EOD;
     public function printToFile($filename = "clog.log", $append = false) {
         $res = print_r($this->returnTimestamps(), true);
         
-        if ($append == true) {
+        if ($append === true) {
             file_put_contents($filename, $res, FILE_APPEND);
         } else {
             file_put_contents($filename, $res);
