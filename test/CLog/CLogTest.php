@@ -89,7 +89,7 @@ class CLogTest extends \PHPUnit_Framework_TestCase {
         $this->assertRegExp($exp_pattern2, $res, 'Regexp missmatch');
         
         $res = $el->memoryPeak("MB");
-        $exp_pattern3 = "/<p>Peek memory consumption was \d* MB.<\/p>/";
+        $exp_pattern3 = "/<p>Peek memory consumption was \d*|\d*\.\d* MB.<\/p>/";
         $this->assertRegExp($exp_pattern3, $res, 'Regexp missmatch');
         
         $res = $el->memoryPeak("FL");
