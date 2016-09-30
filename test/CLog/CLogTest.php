@@ -18,9 +18,6 @@ class CLogTest extends \PHPUnit_Framework_TestCase {
         $res = "test";
         $exp = "test";
         $this->assertEquals($res, $exp, "Created strings missmatch"); 
-    }   
-    
-    
-    
-    
+    }
+
 }
