@@ -6,18 +6,6 @@ namespace thulin82\CLog;
  */
 class CLogTest extends \PHPUnit_Framework_TestCase {
 
-    /**
-     * Basic Test (not testing CLog)
-     *
-     * @return void
-     *
-     */
-    public function testBasicTest() {
-
-        $res = "test";
-        $exp = "test";
-        $this->assertEquals($res, $exp, "Created strings missmatch"); 
-    }
 
     /**
      * Testing numberOfTimestamps()
@@ -52,11 +40,16 @@ class CLogTest extends \PHPUnit_Framework_TestCase {
         $el->timestamp("test", "test", "test");
         $res = $el->returnTimestamps();
         $exp = 1;
-        $this->assertCount($exp, $res);
+        $this->assertCount($exp, $res, "Missmatch in number of timestamps");
+
+        $el->timestamp("test", "test", "test");
+        $res = $el->returnTimestamps();
+        $exp = 2;
+        $this->assertCount($exp, $res, "Missmatch in number of timestamps");
     }
     
     /**
-     * Testing pageLoadTime
+     * Testing pageLoadTime()
      *
      * @return void
      *
@@ -109,10 +102,15 @@ class CLogTest extends \PHPUnit_Framework_TestCase {
         $el->timestamp("test", "test", "test");
         $el->timestamp("test2", "test2", "test2");
         $res = $el->asHTMLTable();
+        $res = trim($res);
         $this->assertInternalType('string', $res);
+        $this->assertStringStartsWith('<table class=table>', $res);
+        $this->assertStringEndsWith('</table>', $res);
 
         $res = $el->asHTMLTable(true);
         $this->assertInternalType('string', $res);
+        $this->assertStringStartsWith('<html>', $res);
+        $this->assertStringEndsWith('</table>', $res);
     }
 
     /**
