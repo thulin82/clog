@@ -1,5 +1,7 @@
 # thulin82/clog
 
+[![Build Status](https://travis-ci.org/thulin82/clog.svg?branch=master)](https://travis-ci.org/thulin82/clog)
+
 ## License
 
 This software is free software and carries a MIT license.
