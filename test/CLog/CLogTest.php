@@ -110,6 +110,9 @@ class CLogTest extends \PHPUnit_Framework_TestCase {
         $el->timestamp("test2", "test2", "test2");
         $res = $el->asHTMLTable();
         $this->assertInternalType('string', $res);
+
+        $res = $el->asHTMLTable(true);
+        $this->assertInternalType('string', $res);
     }
 
     /**
