@@ -1,25 +1,25 @@
 <?php
 //Include CLog Class
-require "../src/CLog/CLog.php";
+require '../src/CLog/CLog.php';
 
 // Create new CLog object
 $log = new \thulin82\Log\CLog();
 
 /***************START LOGGING PART***************/
     //Log start of file
-    $log->timestamp("CLogExample", "Start");
+    $log->timestamp('CLogExample', 'Start');
 
     //Log before sleep()
-    $log->timestamp("CLogExample", "sleep()", "Before sleeping");
+    $log->timestamp('CLogExample', 'sleep()', 'Before sleeping');
 
     //Sleep....
     sleep(2);
 
     //Log after sleep()
-    $log->timestamp("CLogExample", "sleep()", "After sleeping");
+    $log->timestamp('CLogExample', 'sleep()', 'After sleeping');
 
     //Log end of file
-    $log->timestamp("CLogExample", "End");
+    $log->timestamp('CLogExample', 'End');
 /****************END LOGGING PART****************/
 
 //Print asHTMLTable()
@@ -35,6 +35,6 @@ print_r($log->returnTimestamps());
 echo $log->pageLoadTime();
 
 //Print memoryPeak()
-echo $log->memoryPeak("KB");
+echo $log->memoryPeak('KB');
 
-$log->printToFile("clog.log", true);
+$log->printToFile('clog.log', true);
