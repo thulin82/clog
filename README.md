@@ -1,6 +1,8 @@
 # thulin82/clog
 
 [![Build Status](https://travis-ci.org/thulin82/clog.svg?branch=master)](https://travis-ci.org/thulin82/clog)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/thulin82/clog/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/thulin82/clog/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/thulin82/clog/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/thulin82/clog/?branch=master)
 
 ## License
 
