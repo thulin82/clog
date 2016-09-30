@@ -123,7 +123,7 @@ class CLog
      *
      */
     public function asHTMLTable($css = false) {
-        $prev = $first = $this->timestamp[0]['when'];
+        $first = $this->timestamp[0]['when'];
         $last = $this->timestamp[count($this->timestamp) - 1]['when'];
         if ($css === true) {
             $html = '<html><head><link rel="stylesheet" type="text/css" href="css/table.css"></head><body>';
@@ -172,7 +172,6 @@ EOD;
                             <td>$comment</td>
                         </tr>
 EOD;
-            $prev = $val['when'];
         }
         $html .= "</table>";
         return $html;

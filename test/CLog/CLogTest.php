@@ -31,24 +31,14 @@ class CLogTest extends \PHPUnit_Framework_TestCase {
         $el->timestamp("test", "test", "test");
         $res = $el->numberOfTimestamps();
         $exp = 1;
-        $this->assertEquals($res, $exp, "Missmatch in number of timestamps"); 
-    }
-    
-    /**
-     * Testing numberOfTimestamps2()
-     *
-     * @return void
-     *
-     */
-    public function testNumberOfTimestamps2() {
-        $el = new \thulin82\CLog\CLog();
+        $this->assertEquals($res, $exp, "Missmatch in number of timestamps");
 
-        $el->timestamp("test", "test", "test");
         $el->timestamp("test2", "test2", "test2");
         $res = $el->numberOfTimestamps();
         $exp = 2;
-        $this->assertEquals($res, $exp, "Missmatch in number of timestamps"); 
+        $this->assertEquals($res, $exp, "Missmatch in number of timestamps");
     }
+
 
     /**
      * Testing returnTimestamps()
@@ -63,6 +53,48 @@ class CLogTest extends \PHPUnit_Framework_TestCase {
         $res = $el->returnTimestamps();
         $exp = 1;
         $this->assertCount($exp, $res);
+    }
+    
+    /**
+     * Testing pageLoadTime
+     *
+     * @return void
+     *
+     */
+    public function testPageLoadTime() {
+    $el = new \thulin82\CLog\CLog();
+    
+    $el->timestamp("test", "test", "test");    
+    $res = $el->pageLoadTime();        
+    $exp_pattern = "/<p>Page was loaded in \d* secs.<\/p>/";    
+    $this->assertRegExp($exp_pattern, $res, 'Regexp missmatch');    
+    }
+    
+    /**
+     * Testing memoryPeak($size)
+     *
+     * @return void
+     *
+     */
+    public function testMemoryPeak() {
+        $el = new \thulin82\CLog\CLog();
+
+        $el->timestamp("test", "test", "test");
+        $res = $el->memoryPeak("B");
+        $exp_pattern1 = "/<p>Peek memory consumption was \d* B.<\/p>/";
+        $this->assertRegExp($exp_pattern1, $res, 'Regexp missmatch');
+        
+        $res = $el->memoryPeak("KB");
+        $exp_pattern2 = "/<p>Peek memory consumption was \d* KB.<\/p>/";
+        $this->assertRegExp($exp_pattern2, $res, 'Regexp missmatch');
+        
+        $res = $el->memoryPeak("MB");
+        $exp_pattern3 = "/<p>Peek memory consumption was \d* MB.<\/p>/";
+        $this->assertRegExp($exp_pattern3, $res, 'Regexp missmatch');
+        
+        $res = $el->memoryPeak("FL");
+        $exp = "<p>Error in MemoryPeak().</p>";
+        $this->assertEquals($exp, $res, 'Missmatch in error message');
     }
 
 }
