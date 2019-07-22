@@ -4,7 +4,7 @@ namespace thulin82\CLog;
  * Class to test CLog
  *
  */
-class CLogTest extends \PHPUnit_Framework_TestCase {
+class CLogTest extends \PHPUnit\Framework\TestCase {
 
 
     /**
