@@ -125,29 +125,14 @@ class CLog
     public function asHTMLTable($css = false) {
         $first = $this->timestamp[0]['when'];
         $last  = $this->timestamp[count($this->timestamp) - 1]['when'];
-        if ($css === true) {
-            $html = '<html><head><link rel="stylesheet" type="text/css" href="css/table.css"></head><body>';
-
-        } else {
-            $html = '';
-        }
-
-        $html .= <<<EOD
-                    <table class=table>
-                        <caption>Timestamps</caption>
-                        <tr>
-                            <th>Position</th>
-                            <th>Domain</th>
-                            <th>Where</th>
-                            <th>When (s)</th>
-                            <th>Duration (s)</th>
-                            <th>Percent</th>
-                            <th>Memory (MB)</th>
-                            <th>Memory peak (MB)</th>
-                            <th>Comment</th>
-                        </tr>
-EOD;
         $right = ' style="text-align: right;"';
+        $html = '';
+        if ($css === true) { $html = '<html><head><link rel="stylesheet" type="text/css" href="css/table.css"></head><body>';} 
+
+        $html .= "<table class=table><caption>Timestamps</caption><tr><th>Position</th><th>Domain</th><th>Where</th>
+        <th>When (s)</th><th>Duration (s)</th><th>Percent</th><th>Memory (MB)</th><th>Memory peak (MB)</th>
+        <th>Comment</th></tr>";
+
         foreach ($this->timestamp as $val) {
             $pos      = $val['pos'];
             $domain   = $val['domain'];
@@ -159,23 +144,11 @@ EOD;
             $peak     = isset($val['memory-peak']) ? round($val['memory-peak'] / 1024 / 1024, 2) : '-';
             $comment  = $val['comment'];
             $when     = round($when, 3);
-            $html    .= <<<EOD
-                        <tr>
-                            <td>$pos</td>
-                            <td>$domain</td>
-                            <td>$where</td>
-                            <td$right>$when</td>
-                            <td$right>$duration</td>
-                            <td$right>$percent</td>
-                            <td$right>$memory</td>
-                            <td$right>$peak</td>
-                            <td>$comment</td>
-                        </tr>
-EOD;
+            $html    .= "<tr><td>$pos</td><td>$domain</td><td>$where</td><td$right>$when</td><td$right>$duration</td>
+            <td$right>$percent</td><td$right>$memory</td><td$right>$peak</td><td>$comment</td></tr>";
         }
         $html .= '</table>';
         return $html;
-
     }
 
 
