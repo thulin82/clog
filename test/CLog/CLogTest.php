@@ -103,12 +103,12 @@ class CLogTest extends \PHPUnit\Framework\TestCase {
         $el->timestamp("test2", "test2", "test2");
         $res = $el->asHTMLTable();
         $res = trim($res);
-        $this->assertInternalType('string', $res);
+        $this->assertIsString($res);
         $this->assertStringStartsWith('<table class=table>', $res);
         $this->assertStringEndsWith('</table>', $res);
 
         $res = $el->asHTMLTable(true);
-        $this->assertInternalType('string', $res);
+        $this->assertIsString($res);
         $this->assertStringStartsWith('<html>', $res);
         $this->assertStringEndsWith('</table>', $res);
     }
