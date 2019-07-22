@@ -98,7 +98,7 @@ class CLog
      *
      */
     public function memoryPeak($size) {
-        if ((strcmp($size, 'B') && strcmp($size, 'KB') && strcmp($size, 'MB')) ==! 0 ) {
+        if ((strcmp($size, 'B') && strcmp($size, 'KB') && strcmp($size, 'MB')) == !0 ) {
             $html = '<p>Error in MemoryPeak().</p>';
         } else {
             if ($size == 'B') {
@@ -127,7 +127,7 @@ class CLog
         $last  = $this->timestamp[count($this->timestamp) - 1]['when'];
         $right = ' style="text-align: right;"';
         $html = '';
-        if ($css === true) { $html = '<html><head><link rel="stylesheet" type="text/css" href="css/table.css"></head><body>';} 
+        if ($css === true) { $html = '<html><head><link rel="stylesheet" type="text/css" href="css/table.css"></head><body>'; } 
 
         $html .= "<table class=table><caption>Timestamps</caption><tr><th>Position</th><th>Domain</th><th>Where</th>
         <th>When (s)</th><th>Duration (s)</th><th>Percent</th><th>Memory (MB)</th><th>Memory peak (MB)</th>
