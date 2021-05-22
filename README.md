@@ -36,3 +36,11 @@ $log = new \thulin82\CLog\CLog();
 
 ## Examples
 An example file is located in webroot/CLogExample.php to show off the different ways you can use CLog
+
+## Docker
+
+### Build
+
+```bash
+docker build -t clog .
+```

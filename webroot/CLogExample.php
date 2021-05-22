@@ -3,7 +3,7 @@
 require '../src/CLog/CLog.php';
 
 // Create new CLog object
-$log = new \thulin82\Log\CLog();
+$log = new \thulin82\CLog\CLog();
 
 /***************START LOGGING PART***************/
     //Log start of file
