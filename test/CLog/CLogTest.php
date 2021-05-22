@@ -1,19 +1,18 @@
 <?php
 namespace thulin82\CLog;
+
 /**
  * Class to test CLog
- *
  */
-class CLogTest extends \PHPUnit\Framework\TestCase {
-
-
+class CLogTest extends \PHPUnit\Framework\TestCase
+{
     /**
      * Testing numberOfTimestamps()
      *
      * @return void
-     *
      */
-    public function testNumberOfTimestamps() {
+    public function testNumberOfTimestamps()
+    {
         $el = new \thulin82\CLog\CLog();
 
         $el->timestamp("test", "test", "test");
@@ -32,9 +31,9 @@ class CLogTest extends \PHPUnit\Framework\TestCase {
      * Testing returnTimestamps()
      *
      * @return void
-     *
      */
-    public function testReturnTimestamps() {
+    public function testReturnTimestamps()
+    {
         $el = new \thulin82\CLog\CLog();
 
         $el->timestamp("test", "test", "test");
@@ -52,38 +51,38 @@ class CLogTest extends \PHPUnit\Framework\TestCase {
      * Testing pageLoadTime()
      *
      * @return void
-     *
      */
-    public function testPageLoadTime() {
-    $el = new \thulin82\CLog\CLog();
-    
-    $el->timestamp("test", "test", "test");    
-    $res = $el->pageLoadTime();        
-    $exp_pattern = "/<p>Page was loaded in \d* secs.<\/p>/";    
-    $this->assertRegExp($exp_pattern, $res, 'Regexp missmatch');    
+    public function testPageLoadTime()
+    {
+        $el = new \thulin82\CLog\CLog();
+
+        $el->timestamp("test", "test", "test");
+        $res = $el->pageLoadTime();
+        $exp_pattern = "/<p>Page was loaded in \d* secs.<\/p>/";
+        $this->assertMatchesRegularExpression($exp_pattern, $res, 'Regexp missmatch');
     }
     
     /**
      * Testing memoryPeak($size)
      *
      * @return void
-     *
      */
-    public function testMemoryPeak() {
+    public function testMemoryPeak()
+    {
         $el = new \thulin82\CLog\CLog();
 
         $el->timestamp("test", "test", "test");
         $res = $el->memoryPeak("B");
         $exp_pattern1 = "/<p>Peek memory consumption was \d* B.<\/p>/";
-        $this->assertRegExp($exp_pattern1, $res, 'Regexp missmatch');
+        $this->assertMatchesRegularExpression($exp_pattern1, $res, 'Regexp missmatch');
         
         $res = $el->memoryPeak("KB");
         $exp_pattern2 = "/<p>Peek memory consumption was \d* KB.<\/p>/";
-        $this->assertRegExp($exp_pattern2, $res, 'Regexp missmatch');
+        $this->assertMatchesRegularExpression($exp_pattern2, $res, 'Regexp missmatch');
         
         $res = $el->memoryPeak("MB");
         $exp_pattern3 = "/<p>Peek memory consumption was \d*|\d*\.\d* MB.<\/p>/";
-        $this->assertRegExp($exp_pattern3, $res, 'Regexp missmatch');
+        $this->assertMatchesRegularExpression($exp_pattern3, $res, 'Regexp missmatch');
         
         $res = $el->memoryPeak("FL");
         $exp = "<p>Error in MemoryPeak().</p>";
@@ -94,9 +93,9 @@ class CLogTest extends \PHPUnit\Framework\TestCase {
      * Testing asHTMLTable($css = false)
      *
      * @return void
-     *
      */
-    public function testAsHTMLTable() {
+    public function testAsHTMLTable()
+    {
         $el = new \thulin82\CLog\CLog();
 
         $el->timestamp("test", "test", "test");
@@ -117,18 +116,17 @@ class CLogTest extends \PHPUnit\Framework\TestCase {
      * Testing printToFile($filename = "clog.log", $append = false)
      *
      * @return void
-     *
      */
-    public function testPrintToFile() {
-    $el = new \thulin82\CLog\CLog();
+    public function testPrintToFile()
+    {
+        $el = new \thulin82\CLog\CLog();
 
-    $el->timestamp("test", "test", "test");
-    $name = "clog.log";
-    $el->printToFile($name);
-    $this->assertFileExists($name, 'File does not exist');
+        $el->timestamp("test", "test", "test");
+        $name = "clog.log";
+        $el->printToFile($name);
+        $this->assertFileExists($name, 'File does not exist');
 
-    $el->printToFile($name, true);
-    $this->assertFileExists($name, 'File does not exist');
+        $el->printToFile($name, true);
+        $this->assertFileExists($name, 'File does not exist');
     }
-    
 }

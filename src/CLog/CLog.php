@@ -1,5 +1,6 @@
 <?php
 namespace thulin82\CLog;
+
 /**
  * Class to log what happens.
  *
@@ -35,13 +36,13 @@ class CLog
         $now = microtime(true);
 
         $this->timestamp[] = array(
-            'pos'     => $this->pos,
-            'domain'  => $domain,
-            'where'   => $where,
-            'comment' => $comment,
-            'when'    => $now,
-            'memory'  => memory_get_usage(true),
-        );
+                              'pos'     => $this->pos,
+                              'domain'  => $domain,
+                              'where'   => $where,
+                              'comment' => $comment,
+                              'when'    => $now,
+                              'memory'  => memory_get_usage(true),
+                             );
 
         if ($this->pos > 0) {
             $this->timestamp[$this->pos - 1]['memory-peak'] = memory_get_peak_usage(true);
@@ -56,9 +57,9 @@ class CLog
      * Get the number of timestamps made.
      *
      * @return Number of timestamps.
-     *
      */
-    public function numberOfTimestamps() {
+    public function numberOfTimestamps()
+    {
         return count($this->timestamp);
     }
 
@@ -67,9 +68,9 @@ class CLog
      * Get the timestamps made.
      *
      * @return array of timestamps.
-     *
      */
-    public function returnTimestamps() {
+    public function returnTimestamps()
+    {
         return $this->timestamp;
     }
 
@@ -78,9 +79,9 @@ class CLog
      * Page load time as html.
      *
      * @return string with the page load time.
-     *
      */
-    public function pageLoadTime() {
+    public function pageLoadTime()
+    {
         $first    = $this->timestamp[0]['when'];
         $last     = $this->timestamp[count($this->timestamp) - 1]['when'];
         $loadtime = round($last - $first, 3);
@@ -95,9 +96,9 @@ class CLog
      * @param string $size is given in B/KB/MB
      *
      * @return string with the memory peak.
-     *
      */
-    public function memoryPeak($size) {
+    public function memoryPeak($size)
+    {
         if ((strcmp($size, 'B') && strcmp($size, 'KB') && strcmp($size, 'MB')) == !0 ) {
             $html = '<p>Error in MemoryPeak().</p>';
         } else {
@@ -127,7 +128,9 @@ class CLog
         $last  = $this->timestamp[count($this->timestamp) - 1]['when'];
         $right = ' style="text-align: right;"';
         $html = '';
-        if ($css === true) { $html = '<html><head><link rel="stylesheet" type="text/css" href="css/table.css"></head><body>'; } 
+        if ($css === true) {
+            $html = '<html><head><link rel="stylesheet" type="text/css" href="css/table.css"></head><body>';
+        }
 
         $html .= "<table class=table><caption>Timestamps</caption><tr><th>Position</th><th>Domain</th><th>Where</th>
         <th>When (s)</th><th>Duration (s)</th><th>Percent</th><th>Memory (MB)</th><th>Memory peak (MB)</th>
@@ -157,7 +160,6 @@ class CLog
      *
      * @param string $filename the name of the file to write to
      * @param bool   $append if to overwrite log or append
-     *
      */
     public function printToFile($filename = 'clog.log', $append = false) {
         $res = print_r($this->returnTimestamps(), true);

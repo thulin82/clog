@@ -40,8 +40,8 @@ jobs:
             - name: 'Run tests with phpunit'
               run: 'vendor/bin/phpunit'
 
-            - name: 'Run tests with phpcs'
-              run: 'vendor/bin/phpcs --standard=.phpcs.xml'
+            # - name: 'Run tests with phpcs'
+            #   run: 'vendor/bin/phpcs --standard=.phpcs.xml'
 
             - name: 'Run tests with phpstan'
               run: 'vendor/bin/phpstan analyze src'
