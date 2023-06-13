@@ -3,36 +3,42 @@ namespace thulin82\CLog;
 
 /**
  * Class to log what happens.
- *
  */
 class CLog
 {
     /**
      * Properties
      *
+     * @var array $timestamp is the array where the timestamps are saved.
      */
     private $timestamp = array();
-    private $pos       = 0;
 
+    /**
+     * Properties
+     *
+     * @var integer $pos is the position in the array.
+     */
+    private $pos = 0;
 
     /**
      * Constructor
-     *
      */
-    public function __construct() {
-        
+    public function __construct()
+    {
     }
 
 
     /**
-     * timestamp, log a event with a time.
+     * Timestamp, log a event with a time.
      *
-     * @param string      $domain is the module or class.
-     * @param string      $where a more specific place in the domain.
+     * @param string      $domain  is the module or class.
+     * @param string      $where   a more specific place in the domain.
      * @param string|null $comment on the timestamp.
      *
+     * @return void
      */
-    public function timestamp($domain, $where, $comment = null) {
+    public function timestamp($domain, $where, $comment = null)
+    {
         $now = microtime(true);
 
         $this->timestamp[] = array(
@@ -99,7 +105,7 @@ class CLog
      */
     public function memoryPeak($size)
     {
-        if ((strcmp($size, 'B') && strcmp($size, 'KB') && strcmp($size, 'MB')) == !0 ) {
+        if ((strcmp($size, 'B') && strcmp($size, 'KB') && strcmp($size, 'MB')) == !0) {
             $html = '<p>Error in MemoryPeak().</p>';
         } else {
             if ($size == 'B') {
@@ -121,9 +127,9 @@ class CLog
      * @param bool $css if to use css or not
      *
      * @return string with a html-table to display all timestamps.
-     *
      */
-    public function asHTMLTable($css = false) {
+    public function asHTMLTable($css = false)
+    {
         $first = $this->timestamp[0]['when'];
         $last  = $this->timestamp[count($this->timestamp) - 1]['when'];
         $right = ' style="text-align: right;"';
@@ -159,9 +165,12 @@ class CLog
      * Print your timestamps to a file
      *
      * @param string $filename the name of the file to write to
-     * @param bool   $append if to overwrite log or append
+     * @param bool   $append   if to overwrite log or append
+     *
+     * @return void
      */
-    public function printToFile($filename = 'clog.log', $append = false) {
+    public function printToFile($filename = 'clog.log', $append = false)
+    {
         $res = print_r($this->returnTimestamps(), true);
         
         if ($append === true) {
@@ -170,5 +179,4 @@ class CLog
             file_put_contents($filename, $res);
         }
     }
-
 }

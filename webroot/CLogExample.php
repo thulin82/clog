@@ -1,26 +1,40 @@
 <?php
+/**
+ * Example file for CLog.
+ *
+ * @package CLog
+ * @author  Markus Thulin <macky_b@hotmail.com>
+ * @license https://choosealicense.com/licenses/mit/ MIT
+ */
+
 // Include CLog Class.
 require '../src/CLog/CLog.php';
 
 // Create new CLog object.
 $log = new \thulin82\CLog\CLog();
 
-/***************START LOGGING PART***************/
-    // Log start of file.
-    $log->timestamp('CLogExample', 'Start');
+/*
+ * START LOGGING PART
+ */
 
-    // Log before sleep().
-    $log->timestamp('CLogExample', 'sleep()', 'Before sleeping');
+// Log start of file.
+$log->timestamp('CLogExample', 'Start');
 
-    // Sleep....
-    sleep(2);
+// Log before sleep().
+$log->timestamp('CLogExample', 'sleep()', 'Before sleeping');
 
-    // Log after sleep().
-    $log->timestamp('CLogExample', 'sleep()', 'After sleeping');
+// Sleep....
+sleep(2);
 
-    // Log end of file.
-    $log->timestamp('CLogExample', 'End');
-/****************END LOGGING PART****************/
+// Log after sleep().
+$log->timestamp('CLogExample', 'sleep()', 'After sleeping');
+
+// Log end of file.
+$log->timestamp('CLogExample', 'End');
+
+/*
+ * END LOGGING PART
+ */
 
 // Print asHTMLTable().
 echo $log->asHTMLTable(true);
