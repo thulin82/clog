@@ -105,19 +105,18 @@ class CLog
      */
     public function memoryPeak($size)
     {
-        if ((strcmp($size, 'B') && strcmp($size, 'KB') && strcmp($size, 'MB')) == !0) {
-            $html = '<p>Error in MemoryPeak().</p>';
-        } else {
-            if ($size == 'B') {
-                $peek = round(memory_get_peak_usage(true), 2);
-            } else if ($size == 'KB') {
-                $peek = round(memory_get_peak_usage(true) / 1024, 2);
-            } else {
-                $peek = round(memory_get_peak_usage(true) / 1024 / 1024, 2);
-            }
-            $html = "<p>Peek memory consumption was {$peek} {$size}.</p>";
+        $bytes = memory_get_peak_usage(true);
+        $units = [
+                  'B',
+                  'KB',
+                  'MB',
+                 ];
+        $index = array_search($size, $units);
+        if ($index === false) {
+            return '<p>Error in MemoryPeak().</p>';
         }
-        return $html;
+        $peek = round($bytes / pow(1024, $index), 2);
+        return "<p>Peek memory consumption was {$peek} {$size}.</p>";
     }
 
 
