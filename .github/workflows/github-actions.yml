@@ -8,11 +8,11 @@ on:
 
 jobs:
     tests:
-        runs-on: ubuntu-18.04
+        runs-on: ubuntu-20.04
 
         strategy:
             matrix:
-                php-versions: ['7.3', '7.4']
+                php-versions: ["7.4", "8.0", "8.1", "8.2"]
 
         steps:
             - uses: actions/checkout@v2
@@ -37,11 +37,11 @@ jobs:
             - name: Install dependencies
               run: composer install --prefer-dist --no-progress
 
-            - name: 'Run tests with phpunit'
-              run: 'vendor/bin/phpunit'
+            - name: "Run tests with phpunit"
+              run: "vendor/bin/phpunit"
 
             # - name: 'Run tests with phpcs'
             #   run: 'vendor/bin/phpcs --standard=.phpcs.xml'
 
-            - name: 'Run tests with phpstan'
-              run: 'vendor/bin/phpstan analyze src'
+            - name: "Run tests with phpstan"
+              run: "vendor/bin/phpstan analyze src"
