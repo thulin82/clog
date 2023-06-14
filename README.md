@@ -1,4 +1,4 @@
-# thulin82/clog
+# [CLog](https://github.com/thulin82/clog)
 
 [![GitHub Actions](https://github.com/thulin82/clog/actions/workflows/github-actions.yml/badge.svg)](https://github.com/thulin82/clog/actions/workflows/github-actions.yml)
 
